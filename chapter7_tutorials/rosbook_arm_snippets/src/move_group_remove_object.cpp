@@ -1,4 +1,5 @@
-#include <moveit/move_group_interface/move_group.h>
+// #include <moveit/move_group_interface/move_group.h> DEPRECATED
+#include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 
 int main(int argc, char **argv)
@@ -12,7 +13,7 @@ int main(int argc, char **argv)
 
     // We obtain the current planning scene and wait until everything is up
     // and running, otherwise the request won't succeed
-    moveit::planning_interface::PlanningSceneInterface current_scene;
+    moveit::planning_interface::PlanningSceneInterface current_scene("");
 
     sleep(5.0);
 

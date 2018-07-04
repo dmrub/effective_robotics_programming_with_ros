@@ -1,4 +1,5 @@
-#include <moveit/move_group_interface/move_group.h>
+// #include <moveit/move_group_interface/move_group.h> DEPRECATED
+#include <moveit/move_group_interface/move_group_interface.h>
 
 #include <moveit_msgs/DisplayTrajectory.h>
 
@@ -12,7 +13,7 @@ int main(int argc, char **argv)
     spin.start();
 
     // Get the arm planning group
-    moveit::planning_interface::MoveGroup plan_group("arm");
+    moveit::planning_interface::MoveGroupInterface plan_group("arm");
 
     // Create a published for the arm plan visualization
     ros::Publisher display_pub = nh.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
@@ -35,7 +36,7 @@ int main(int argc, char **argv)
 
     // Perform the planning step, and if it succeeds display the current
     // arm trajectory and move the arm
-    moveit::planning_interface::MoveGroup::Plan goal_plan;
+    moveit::planning_interface::MoveGroupInterface::Plan goal_plan;
     if (plan_group.plan(goal_plan))
     {
         moveit_msgs::DisplayTrajectory display_msg;
